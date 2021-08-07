@@ -16,7 +16,7 @@ mongoose
     console.log(err);
   });
 
-//schema
+//schema1
 //schema define the structure of the document , default value and validator
 
 const playlistSchema = new mongoose.Schema({
