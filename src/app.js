@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const validator = require("validator");
 
 //connection create (if database exist then perfect otherwise create new database)
 mongoose
@@ -20,7 +21,16 @@ mongoose
 
 const playlistSchema = new mongoose.Schema({
   name: String,
-  email: String,
+  email: {
+   type : String,
+   required : true,
+   unique : true,
+   validate(value) {
+     if(!validator.isEmail(value)){
+       throw new Error("Please insert Valid Email")
+     }
+   }
+  },
   age: Number,
   bio: String,
   handicap: Boolean,
